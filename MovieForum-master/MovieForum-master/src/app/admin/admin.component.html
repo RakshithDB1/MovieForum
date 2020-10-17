@@ -1,0 +1,77 @@
+<!-- Navbar Start -->
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(10, 10, 10, 0.6);">
+    <a class="navbar-brand navText" href="#">Admin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['../home','hi','Admin']">Home</a>
+            </li>
+            <!-- <li class="nav-item active">
+                <a class="nav-link" href="#">Admin</a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['..']">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Navbar End -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <form class="bgStyle" #login="ngForm">
+                <h3 align="center" style="color: white">Admin Form</h3>
+                <div class="test">
+                   <input type="text" name="name" required ngModel #name="ngModel"><br>        
+                    <label>Movie Name<span>*</span></label>
+                    <p *ngIf="name.invalid && name.touched">Enter Movie Name</p>
+                </div>
+                
+                <div class="test">
+                    <input type="text" name="genre" required ngModel #genre="ngModel"><br>
+                    <label>Genre<span>*</span></label>
+                    <p *ngIf="genre.invalid && genre.touched">Enter movie genre</p>
+                </div>
+
+                
+                <div class="test">
+                        <input type="text" name="tlink" required ngModel #tlink="ngModel"><br>
+                        <label>Trailer Link<span>*</span></label>
+                        <p *ngIf="tlink.invalid && tlink.touched">Enter movie trailer link</p>
+                </div>
+
+                <div class="test">
+                        <input type="text" name="ilink" required ngModel #ilink="ngModel"><br>
+                        <label>Poster Link<span>*</span></label>
+                        <p *ngIf="ilink.invalid && ilink.touched">Enter movie poster link<br>
+                </div>
+                <br>
+
+                <div class="test">
+                    <textarea type="text" rows="6" name="description" required ngModel #description="ngModel"></textarea><br>
+                    <label>Description<span>*</span></label>
+                    <br>
+                    <p *ngIf="description.invalid && description.touched">Enter movie poster link<br>
+                </div>                
+                <p class="message" style="color: red">{{errorText}}</p>
+                <p class="message" style="color: green">{{successText}}</p>
+                <div class="button" (click)="accept(login)">Submit</div>
+                <br>
+            </form>
+        </div>
+        
+
+        <div class="col-lg-8">
+            <div  align="center" class="bgCol">
+                <div class="list" *ngFor="let i of movies" (click)="open(i.name)">{{i.name}}</div>
+            </div>
+        </div>
+    </div>
+</div>

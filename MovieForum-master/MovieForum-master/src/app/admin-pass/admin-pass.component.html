@@ -1,0 +1,9 @@
+<form class="bgStyle" #passForm="ngForm">
+    <div class="test">
+        <input type="password" name="passCode" (click)="setErrorStatus()" required ngModel #passCode="ngModel"><br>        
+        <label>Enter Passcode<span>*</span></label>
+        <p *ngIf="passCode.invalid && passCode.touched">Enter Passcode</p>
+        <p *ngIf="errorStatus && passCode.valid">Invalid Passcode</p>
+    </div>
+    <div class="button" (click)="accept(passForm)">Submit</div>
+</form>
